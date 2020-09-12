@@ -1,0 +1,5 @@
+total 12
+drwxrwxr-x 2 abhisheks abhisheks 4096 Sep 12 22:10 .
+drwxrwxr-x 7 abhisheks abhisheks 4096 Sep 12 22:10 ..
+-rw-r--r-- 1 abhisheks abhisheks    0 Sep 12 22:10 permdump.txt
+-rw-rw-r-- 1 abhisheks abhisheks   74 Sep 12 21:25 Point.m
