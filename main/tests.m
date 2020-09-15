@@ -8,12 +8,15 @@ addpath("./Sensor");
 addpath("./Point");
 #Add the path for the grid cell struct.
 addpath("./GridCell");
+#Add the path for the struct array functions.
+addpath("./StructArray");
 
-p1=Point(0,0);
-p2=Point(10,10);
+p=Point(10,10);
 
-gc=GridCell(p1,p2);
+gc=GridCell(Point(0,0),p);
 
-hs=2;
+gc
 
-a=get_area_vlines(gc,hs)
+p.x=10100;
+
+gc

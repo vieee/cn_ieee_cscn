@@ -1,0 +1,6 @@
+total 16
+drwxrwxr-x 2 abhisheks abhisheks 4096 Sep 15 17:15 .
+drwxrwxr-x 8 abhisheks abhisheks 4096 Sep 15 17:29 ..
+-rw-rw-r-- 1 abhisheks abhisheks  972 Sep 15 17:07 add_struct.m
+-rw-rw-r-- 1 abhisheks abhisheks  438 Sep 15 17:14 locate_struct.m
+-rw-r--r-- 1 abhisheks abhisheks    0 Sep 15 17:29 permdump.txt
