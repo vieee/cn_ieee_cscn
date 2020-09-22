@@ -10,19 +10,25 @@ addpath("./Point");
 addpath("./GridCell");
 #Add the path for the struct array functions.
 addpath("./StructArray");
-#Add the path for the shape area functions.
+#Add the path for the struct array functions.
 addpath("./ShapeArea");
-#Add the path for the duynamic array functions.
-addpath("./Dynamic1DMatrix")
 
-#Testing the intersection of vlines and circles.
-
-gc=GridCell(0,0,10,10);
-
-sensor=Sensor(1,0,5);
-
-gc_shape_area=get_shape_area(gc,0.001);
-
-[a,to_remove,to_add]=try_intersection(sensor,gc_shape_area);
-
+gc=GridCell(0,0,5,5);
+vl=get_shape_area(gc,1);
+a=get_area(vl);
 a
+
+hs=0.0009;
+vl=ShapeArea(hs);
+for x=0:hs:5
+	if(x==5)
+		break;
+	endif
+	vl=add_vline(vl,VerticalLineSegment(0,0,x));
+endfor
+
+a=get_area(vl);
+a
+
+#For a length of 5 units , optimum horizontal seperation is 0.0009
+

@@ -1,5 +1,6 @@
-total 12
-drwxrwxr-x 2 abhisheks abhisheks 4096 Sep 12 22:10 .
-drwxrwxr-x 8 abhisheks abhisheks 4096 Sep 15 17:29 ..
--rw-r--r-- 1 abhisheks abhisheks    0 Sep 15 17:29 permdump.txt
+total 16
+drwxrwxr-x 2 abhisheks abhisheks 4096 Sep 17 21:17 .
+drwxrwxr-x 9 abhisheks abhisheks 4096 Sep 17 21:44 ..
+-rw-r--r-- 1 abhisheks abhisheks    0 Sep 20 00:47 permdump.txt
 -rw-r--r-- 1 abhisheks abhisheks   90 Sep 12 21:29 separationSquared.m
+-rw-rw-r-- 1 abhisheks abhisheks  466 Sep 16 17:01 try_intersect.m
