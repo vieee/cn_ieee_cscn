@@ -1,3 +1,5 @@
+#Find the points of intersection of the sensing circle of a sensor and a vertical line.
+#Only the Y-coordinates of the points of intersection are returned.
 function xns=sensor_X_vline(sensor,vline)
 	R=sensor.range;
 	x1=sensor.location.x;
@@ -25,6 +27,7 @@ function xns=sensor_X_vline(sensor,vline)
 	t2=-2*y1;
 	t3=y1^2+(x0-x1)^2-R^2;
 
+	#Solve the polynomial with the above coefficients.
 	xns=roots([t1,t2,t3]);
 
 endfunction

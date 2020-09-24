@@ -21,3 +21,4 @@ function shape_area=get_shape_area(gc,hsepr)
 		shape_area=add_vline(shape_area,VerticalLineSegment(x,base_y,base_y+height));
 	endfor
 endfunction
+

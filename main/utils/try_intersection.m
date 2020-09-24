@@ -1,4 +1,8 @@
 #Try to intersect a sensors sensing radius with an array of vlines.
+#'area_of_intersection' is the area of intersection.
+#'vline_indices_to_remove' is the 1D array of indices of the vlines in the shape area which have to be removed.
+#'vlines_to_add' is the structure array of VerticalLineSegment structures to add to the shape area.
+#The original shape_area is not modified.
 function [area_of_intersection,vline_indices_to_remove,vlines_to_add]=try_intersection(sensor,shapearea)
 	#The initial area of intersection is 0.
 	area_of_intersection=0;
@@ -73,5 +77,6 @@ function [area_of_intersection,vline_indices_to_remove,vlines_to_add]=try_inters
 			endif
 		endif
 	endfor
+	#The final step is to multiply with the horizontal separation.
 	area_of_intersection*=shapearea.dx;
 endfunction
