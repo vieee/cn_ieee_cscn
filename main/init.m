@@ -16,6 +16,7 @@ function [rect, sensors] = init()
 endfunction
 
 #{
+This is how we implement it
 [rect, sensors] = init();
 for i = 1 : 1 : length(sensors)
 	disp(sensors(i));
