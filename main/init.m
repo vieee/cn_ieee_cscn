@@ -6,7 +6,7 @@ function [rect, sensors] = init()
 	sensors = StructArray();
 	n = input("Please enter the number of Sensors: ");
 	r = input("Please enter the range of each sensor: ");
-	min_no = width * height * 2 / r;
+	min_no = width * height * 2 / (r * r);
 	#	We check if is perfectly divisible or not
 	if(min_no != floor(min_no))
 		#	Since it is not perfectly divisible, we can assume some residual area to be present
