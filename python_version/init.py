@@ -2,8 +2,10 @@ import math, random
 #I'm not calling range of the sensor by its name because python has a range function
 class Sensor:
 	radius = 0 #Radius is a static value as the radii of all sensors will be the same
+	total_lifetime = 0
 	def __init__(self, coordinates):
 		self.coordinates = coordinates
+		self.remaining_lifetime = Sensor.total_lifetime
 
 class GridCell:
 	density = 0	#Whether we take it to be consistent for each and every single area, keeping density static is better
@@ -56,6 +58,9 @@ def init():
 	while Sensor.radius <= 0:
 		Sensor.radius = float(input("Enter the range of the sensors: "))
 
+	while Sensor.total_lifetime <= 0:
+		Sensor.total_lifetime = float(input("Enter the total lifetime of each sensor: "))
+	
 	GridCell.n = math.floor(GridCell.density * rect.width * rect.height)
 
 	no_of_temp_squares = math.floor(rect.width * rect.height * 2 / Sensor.radius**2)
