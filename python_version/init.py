@@ -22,6 +22,9 @@ class GridCell:
 			self.height = attr2
 			self.bottom_left = (0, 0)
 			self.top_right = (self.width, self.height)
+		else:
+			self.width, self.height = 0, 0
+			self.bottom_left, self.top_right = (0, 0), (0, 0)
 
 #Range is basically range but it will be for real numbers, its basically just a while loop, but okay
 #Just like range, its default value
