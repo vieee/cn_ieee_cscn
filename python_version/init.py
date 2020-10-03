@@ -87,8 +87,12 @@ def init():
 				sensors.append(sensor)
 		if GridCell.n > len(sensors):
 			current_left = GridCell.n - len(sensors)
+			low_x = rect.bottom_left[0] - Sensor.radius
+			loy_y = rect.bottom_left[1] - Sensor.radius
 			for i in range(current_left):
-				sensor = Sensor((rect.bottom_left[0] + rect.width * random.random(), rect.bottom_left[1] + rect.height * random.random()))
+				#This covers the area in which the sensor can affect the main area
+				#Therefore it randomly places the sensor within a rectangle of width + 2r and height + 2r
+				sensor = Sensor((low_x + (rect.width + 2 * Sensor.radius) * random.random(), low_y + (rect.height + 2 * Sensor.radius) * random.random()))
 				sensors.append(sensor)
 	return rect, sensors
 
