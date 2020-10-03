@@ -16,7 +16,7 @@ class GridCell:
 			self.top_right = tuple(attr2)
 			self.width = attr2[0] - attr1[0]
 			self.height = attr2[1] - attr1[0]
-		else:
+		elif type(attr1) == type(attr2):
 			#If dimensions
 			self.width = attr1
 			self.height = attr2
