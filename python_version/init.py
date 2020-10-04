@@ -91,7 +91,7 @@ def init():
 		'''
 		for y in Range(rect.bottom_left[1], rect.top_right[1], temp_square_side):
 			for x in Range(rect.bottom_left[0], rect.top_right[0], temp_square_side):
-				sensor = Sensor((x, y))
+				sensor = Sensor((x + random.random() * temp_square_side, y + random.random() * temp_square_side))
 				sensors.append(sensor)
 		if GridCell.n > len(sensors):
 			current_left = GridCell.n - len(sensors)
