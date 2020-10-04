@@ -27,6 +27,14 @@ class GridCell:
 		else:
 			self.width, self.height = 0, 0
 			self.bottom_left, self.top_right = (0, 0), (0, 0)
+	
+	def getVertices(self):
+		return [self.bottom_left, (self.top_right[0], self.bottom_left[1]), self.top_right, (self.bottom_left[0], self.top_right[1])]
+
+	def getCurveSet(self):
+		#For the random shape
+		#If it is a horizontal vertex, it will be as (value, True), if vertical (value, False)
+		return [(self.bottom_left[1], True), (self.top_right[0], False), (self.top_right[1], True), (self.bottom_left[0], False)]
 
 #Range is basically range but it will be for real numbers, its basically just a while loop, but okay
 #Just like range, its default value
