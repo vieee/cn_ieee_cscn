@@ -1,4 +1,6 @@
 import math, random
+import matplotlib.pyplot as plt
+import numpy as np
 #I'm not calling range of the sensor by its name because python has a range function
 class Sensor:
 	radius = 0 #Radius is a static value as the radii of all sensors will be the same
@@ -93,6 +95,17 @@ def init():
 			for x in Range(rect.bottom_left[0], rect.top_right[0], temp_square_side):
 				sensor = Sensor((x + random.random() * temp_square_side, y + random.random() * temp_square_side))
 				sensors.append(sensor)
+		'''
+		Checks the initial network to get atleast one coverset
+		Xs, Ys = [], []
+		for i in sensors:
+			Xs.append(i.coordinates[0])
+			Ys.append(i.coordinates[1])
+		Xs = np.array(Xs)
+		Ys = np.array(Ys)
+		plt.scatter(Xs, Ys, s = 0.7)
+		plt.show()
+		'''
 		if GridCell.n > len(sensors):
 			current_left = GridCell.n - len(sensors)
 			low_x = rect.bottom_left[0] - Sensor.radius
@@ -103,8 +116,18 @@ def init():
 				sensor = Sensor((low_x + (rect.width + 2 * Sensor.radius) * random.random(), low_y + (rect.height + 2 * Sensor.radius) * random.random()))
 				sensors.append(sensor)
 	return rect, sensors
-
-#rect, sensors = init()
+'''
+#To see the formed network of sensors
+rect, sensors = init()
+Xs, Ys = [], []
+for i in sensors:
+	Xs.append(i.coordinates[0])
+	Ys.append(i.coordinates[1])
+Xs = np.array(Xs)
+Ys = np.array(Ys)
+plt.scatter(Xs, Ys, s = 0.7)
+plt.show()
+'''
 #Range(0.5, 5.5) to get 0.5, 1.5, ... , 4.5, 5.5
 #Range(0.5, 5.5, less_than_equal_to = False) to get 0.5, 1.5, ...., 4.5
 #Range(0.5, 5.5, 0.5) to get 0.5, 1.0, ..., 5.5
