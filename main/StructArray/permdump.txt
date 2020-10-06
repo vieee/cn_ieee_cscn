@@ -1,7 +1,8 @@
-total 20
-drwxrwxr-x  2 abhisheks abhisheks 4096 Sep 17 17:44 .
-drwxrwxr-x 10 abhisheks abhisheks 4096 Sep 22 23:52 ..
--rw-rw-r--  1 abhisheks abhisheks  972 Sep 15 17:07 add_struct.m
--rw-rw-r--  1 abhisheks abhisheks  438 Sep 15 17:14 locate_struct.m
--rw-r--r--  1 abhisheks abhisheks    0 Sep 24 20:29 permdump.txt
--rw-rw-r--  1 abhisheks abhisheks  112 Sep 17 17:44 StructArray.m
+total 24
+drwxr-xr-x  2 abhisheks abhisheks 4096 Oct  4 22:02 .
+drwxr-xr-x 10 abhisheks abhisheks 4096 Oct  4 22:02 ..
+-rw-r--r--  1 abhisheks abhisheks  972 Oct  4 22:02 add_struct.m
+-rw-r--r--  1 abhisheks abhisheks  438 Oct  4 22:02 locate_struct.m
+-rw-r--r--  1 abhisheks abhisheks    0 Oct  6 02:14 permdump.txt
+-rw-r--r--  1 abhisheks abhisheks  196 Oct  4 22:02 remove_struct_at.m
+-rw-r--r--  1 abhisheks abhisheks  112 Oct  4 22:02 StructArray.m

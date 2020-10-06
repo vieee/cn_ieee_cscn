@@ -1,0 +1,6 @@
+total 24
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct  6 02:14 .
+drwxr-xr-x 6 abhisheks abhisheks 4096 Oct  5 21:14 ..
+-rw-r--r-- 1 abhisheks abhisheks 4809 Oct  4 22:19 init.py
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct  6 02:14 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks 7407 Oct  4 22:02 shape.py

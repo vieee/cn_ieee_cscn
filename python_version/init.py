@@ -9,6 +9,7 @@ class Sensor:
 		self.coordinates = coordinates
 		self.remaining_lifetime = Sensor.total_lifetime
 
+
 class GridCell:
 	density = 0	#Whether we take it to be consistent for each and every single area, keeping density static is better
 	n = 0
@@ -37,6 +38,9 @@ class GridCell:
 		#For the random shape
 		#If it is a horizontal vertex, it will be as (value, True), if vertical (value, False)
 		return [(self.bottom_left[1], True), (self.top_right[0], False), (self.top_right[1], True), (self.bottom_left[0], False)]
+
+#Function defintions here.
+
 
 #Range is basically range but it will be for real numbers, its basically just a while loop, but okay
 #Just like range, its default value
