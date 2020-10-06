@@ -308,7 +308,7 @@ class Shape:
 		#A matrix with columns (x2 - x1)^2 and (y2 - y1)^2
 		temp = np.sum(temp, axis = 1)
 		#This accomplishes (x2 - x1)^2 + (y2 - y1)^2
-		temp -= Sensor.radius**2
+		temp -= sensor.radius**2
 		#This is distance^2 - radius^2, basically if an element is <= 0, it is within the sensor's range
 		return temp
 
