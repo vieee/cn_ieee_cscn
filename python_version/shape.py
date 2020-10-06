@@ -350,6 +350,11 @@ class Shape:
 					Therefore for the matrix, take np.where()[0]
 
 					Now you have an array of all the indices which are in the intersection area.
+					
+					After finding the best sensor, simply remove all of the vertices that were in the intersection area.
+					This reduces the matrix size in the next iteration
+					
+					The moment the size of this matrix is 0, we get a coverset
 				'''
 				if len(np.where(temp_area <= 0)[0].tolist()) > len(np.where(area <= 0)[0].tolist()):
 					index = i
