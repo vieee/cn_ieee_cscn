@@ -113,7 +113,7 @@ def init():
 		if GridCell.n > len(sensors):
 			current_left = GridCell.n - len(sensors)
 			low_x = rect.bottom_left[0] - Sensor.radius
-			loy_y = rect.bottom_left[1] - Sensor.radius
+			low_y = rect.bottom_left[1] - Sensor.radius
 			for i in range(current_left):
 				#This covers the area in which the sensor can affect the main area
 				#Therefore it randomly places the sensor within a rectangle of width + 2r and height + 2r
