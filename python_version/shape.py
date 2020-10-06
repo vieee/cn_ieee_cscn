@@ -188,17 +188,6 @@ class Curve:
 
 				return []
 
-	def make_Polygon(self):
-		answer = [(self.x - self.radius, self.y)]
-		for i in Range(self.x - self.radius + interval, self.x + self.radius, interval):
-			y1_y2 = self.getOtherCoordinate(i)
-			answer.append(y1_y2[0])
-			if i != self.x + self.radius:
-				answer.insert(0, y1_y2[1])
-		if answer[-1][0] != self.x + self.radius:
-			answer.append((self.x + self.radius, self.y))
-		return answer
-
 class Shape:
 	#We always initialize a shape with a gridcell
 	interval = 0.1
@@ -230,7 +219,7 @@ class Shape:
 							del answer	#Maintains space and no unnecessary space remains
 							answer = temp
 						temp = []
-			if first[0] == self.Q[0] and len(temp) > 0 and temp[-1] == self.Q[-1]:
+			if first != None and first[0] == self.Q[0] and len(temp) > 0 and temp[-1] == self.Q[-1]:
 				temp += first #The last and first vertices are adjacent and thus if both are inside, then union their sets
 
 			if len(answer) < len(temp):
@@ -311,82 +300,97 @@ class Shape:
 		else:
 			#Assumption: Vertices are in proper order and thus it each of the cases, we go clockwise only
 			return 1
+	
+	def get_area_of_intersection(self, sensor):
+		#Basically the matrix form of (x2 - x1) and (y2 - y1)
+		temp = self.areaVertices - np.array(sensor.coordinates)
+		temp *= temp
+		#A matrix with columns (x2 - x1)^2 and (y2 - y1)^2
+		temp = np.sum(temp, axis = 1)
+		#This accomplishes (x2 - x1)^2 + (y2 - y1)^2
+		temp -= sensor.radius**2
+		#This is distance^2 - radius^2, basically if an element is <= 0, it is within the sensor's range
+		return temp
 
-	def get_vertices_for_area(self):
-		answer = []
-		length = len(self.Q)
-		for i in range(len(self.curveSet)):
-			if self.curveSet[i].isCircle:
-				a = self.Q[i]
-				b = self.Q[(i + 1) % length]
-				direction = self.getDirection(i)
-				quadrant1 = self.curveSet[i].getQuadrant(a, direction)
-				quadrant2 = self.curveSet[i].getQuadrant(b, direction)
-				transition = {
-					(1, 0): 2, (2, 0): 3, (3, 0): 4, (4, 0): 1,
-					(1, 1): 4, (4, 1): 3, (3, 1): 2, (2, 1): 1
-				}
-				temp_start = a
-				while quadrant1 != quadrant2:
-					vals = self.curveSet[i].getQuadrantRange(temp_start, direction)
-					change = [False, 0]
-					for j in vals:
-						if not change[0]:
-							if change[1] == 0:
-								change[1] += j
-							else:
-								change[1] = j - change[1]
-								change[0] = True
-						y1_y2 = self.curveSet[i].getOtherCoordinate(j)
-						if self.curveSet[i].getQuadrant((j, y1_y2[0])) == quadrant1:
-							answer.append((j, y1_y2[0]))
-						else:
-							answer.append((j, y1_y2[1]))
-					quadrant1 = transition[(quadrant1, direction)]
-					temp_start[0] = vals[-1][0] + change[1]
-					y1_y2 = self.curveSet[i].getOtherCoordinate(temp_start)
-					if self.curveSet[i].getQuadrant((temp_start[0], y1_y2[0])) == quadrant1:
-						temp_start[1] = y1_y2[0]
-					else:
-						temp_start[1] = y1_y2[1]
-				
-				for j in self.curveSet[i].getQuadrantRange(temp_start, direction, final_pos = b):
-					y1_y2 = self.curveSet[i].getOtherCoordinate(j)
-					if self.curveSet[i].getQuadrant((j, y1_y2[0])) == quadrant2:
-						answer.append((j, y1_y2[0]))
-					else:
-						answer.append((j, y1_y2[1]))
+	def check_best_sensor(self, sensors):
+		area = None
+		points = None
+		index = None
+		for i in range(len(sensors)):
+			#Run through each sensor
+			temp_points = self.consecutive_points_inside(sensors[i])
+			'''
+				consecutive_points_inside() basically finds the maximum number of consecutive
+				vertices inside the sensor's range
+			'''
+			if points == None or len(temp_points) > len(points):
+				index = i
+				points = temp_points
+				#Basically if a sensor covers a higher no. of consecutive points, it is the best sensor
+				area = self.get_area_of_intersection(sensors[i])
+			elif len(points) == len(temp_points):
+				#No. of vertices of set Q inside the sensors are the same.
+				temp_area = self.get_area_of_intersection(sensors[i])
+				#If the number of vertices covered by new sensor are more than the ones of the new one
+				#Then the new sensor is the best sensor
 				'''
-				if abs(a[0] - b[0]) >= abs(a[1] - b[1]):
-					if b[0] > a[0]:
-						interval_used = Shape.interval
-					else:
-						interval_used = -Shape.interval
-					for i in Range(a[0], b[0], interval_used):
-						y1_y2 = self.curveSet[i].getOtherCoordinate(i)
-						if y1_y2 != None:
-							if (y1_y2[0] <= a[1] and y1_y2[0] >= b[1]) or (y1_y2[0] >= a[1] and y1_y2[0] <= b[1]):
-								answer.append(y1_y2[0])
-							elif (y1_y2[1] <= a[1] and y1_y2[1] >= b[1]) or (y1_y2[1] >= a[1] and y1_y2[1] <= b[1]):
-								answer.append(y1_y2[1])
-				else:
-					if b[1] > a[1]:
-						interval_used = Shape.interval
-					else:
-						interval_used = -Shape.interval
-					for i in Range(a[1], b[1], interval_used):
-						x1_x2 = self.curveSet[i].getOtherCoordinate(i, False)
-						if x1_x2 != None:
-							if (x1_x2[0] <= a[0] and x1_x2[0] >= b[0]) or (x1_x2[0] >= a[0] and x1_x2[0] <= b[0]):
-								answer.append(x1_x2[0])
-							elif (x1_x2[1] <= a[0] and x1_x2[1] >= b[0]) or (x1_x2[1] >= a[0] and x1_x2[1] <= b[0]):
-								answer.append(x1_x2[1])
+					np.where() is a function which returns an array of indices of a matrix
+					that fulfill a condition.
+
+					Therefore the number of vertices inside the range of the sensor will be compared
+					and based on that, the best sensor is selected.
+
+					--------------Refer to area_of_intersection-------------------
+
+					Now, we know that if an element in the matrix has <= 0, then the vertex from which
+					we derived it from is inside the circle.
+
+					We find the index of all such vertices using np.where()
+					np.where() returns (matrix needed, datatype)
+					Therefore for the matrix, take np.where()[0]
+
+					Now you have an array of all the indices which are in the intersection area.
 				'''
-			else:
-				answer.append(self.Q[i])
-		if self.Q[-1] != answer[-1]:
-			answer.append(self.Q[-1])
-		return answer
+				if len(np.where(temp_area <= 0)[0].tolist()) > len(np.where(area <= 0)[0].tolist()):
+					index = i
+					points = temp_points
+					area = temp_area
+		area = np.where(area <= 0)[0].tolist()
+		self.areaVertices = self.areaVertices.tolist()
+		#print(len(self.areaVertices))
+		c1 = len(self.areaVertices)
+		'''
+			We get the best sensors's area and remove the vertices which were in its intersection
+		'''
+		for i in range(len(area) - 1, -1, -1):
+			self.areaVertices.pop(i)
+		c2 = len(self.areaVertices)
+		print("No. of points intersected:", c1 - c2)
+		#print(len(self.areaVertices))
+		self.areaVertices = np.array(self.areaVertices)
+		'''
+			We now have the remaining set of vertices representing the irregular shape
+		'''
+		return index, points
+'''
+To execute the function to get best sensor
+rect, sensors = init.init()
+print(len(sensors))
+Xs = []
+Ys = []
+for i in sensors:
+	Xs.append(i.coordinates[0])
+	Ys.append(i.coordinates[1])
+Xs = np.array(Xs)
+Ys = np.array(Ys)
+plt.scatter(Xs, Ys, s = 0.7)
+plt.show()
+
+shapex = Shape(rect)
+index, points = shapex.check_best_sensor(sensors)
+print(index, points)
+'''
+
 '''
 rect = init.GridCell(500, 500)
 shape = Shape(rect)
