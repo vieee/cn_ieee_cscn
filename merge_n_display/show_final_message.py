@@ -1,29 +1,54 @@
 from popups import alert_popup, listToString
+import numpy as np
+import copy
 
 def show_up(coverset_list):
-    # coverset_list: contains list data denoting coversets in each grid cell
-    result_coverset = []
-    length = len(coverset_list)
-    time_of_work = 0
-    index = 0
-    k = 0
-    small = 100000
-    while true:
-        for i in range(length):
-            if coverset_list[i][0][1] < small:
-                small = coverset_list[i][0][1]
-                index = i
+  # coverset_list: contains list data denoting coversets in each grid cell
+  result_coverset = [] # data of list addn
+  time_coverset = [] # time of final addn
+  length = len(coverset_list)
+  time_of_work = 0 # time breakpoints array
+  index = 0
+  k = 0
+  small = 100000
+  least_timer = float("inf")
+  
+  for r in coverset_list:
+    # print(r, np.sum(r)[1])
+    ctr = 0
+    for x in r:
+      ctr += x[1]
+
+    least_timer = min(least_timer, ctr)
+  # print(least_timer)
+
+  while time_of_work < least_timer:
+    small = float("inf")
+    for i in range(length):
+      small = min(small, coverset_list[i][0][1])
+    print("small", small)
     
-        for i in range(length):
-            coverset_list[i][0][1] -= small
-            if coverset_list[i][0][1] <= 0:
-                result_coverset[k].append(coverset_list[i][0][0])
-                coverset_list[i].pop(0)
+    temp = []
+    for i in range(length):
+      temp.append(copy.deepcopy(coverset_list[i][0]))
+      coverset_list[i][0][1] -= small
+      if coverset_list[i][0][1] <= 0:
+        # result_coverset.
+        coverset_list[i].pop(0)
+    print(temp, time_of_work)
+    
 
-        k += 1
-        time_of_work += small
-        for i in range(length):
-            if len(coverset_list[i]) == 0:
-                # Coversets done,..
-                alert_popup("Final Observation:-", "Time " + str(time_of_work), listToString(result_coverset))
+    # k += 1
+    result_coverset.append(temp) # coverset data addn
+    time_coverset.append(small) # time of addn
+    time_of_work += small
+    # print(time_of_work)
+  
+  print("result_array", result_coverset)
+  print("time_array", time_coverset)
+  # alert_popup("Final Observation:-", "Time " + str(least_timer), result_coverset)
+  #     if len(coverset_list[i]) == 0:
+  #       # Coversets done,..
+  #       print("fin: ", result_coverset)
 
+        
