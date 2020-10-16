@@ -6,7 +6,6 @@ from check import *
 from Point import Point
 
 
-
 class GridCell():
 	#Whether we take it to be consistent for each and every single area, keeping density static is better
 	density=SENSOR_DENSITY

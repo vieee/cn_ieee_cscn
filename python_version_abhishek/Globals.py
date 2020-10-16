@@ -8,6 +8,8 @@ All of these can be either initialized here , or can be initialized in separate 
 sensor_sensing_radius=0
 
 #The maximum lifetime of each sensor.
+#TODO
+#Remove this
 sensor_maximum_lifetime=0
 
 #A suitable data structure containing all the sensor object.

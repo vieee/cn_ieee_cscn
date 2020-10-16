@@ -9,6 +9,8 @@ from Point import Point
 class Sensor:
 	#Radius is a static value as the radii of all sensors will be the same
 	radius=SENSOR_SENSING_RADIUS
+	#The id which will be assigned to a new sensor object.
+	sid=0
 	def __init__(self,center_coordinates,lifetime):
 		#Perform error checking first.
 		type_check(center_coordinates,(Point,),'Sensor coordinates must be an object of type \'Point\'.')
@@ -17,6 +19,9 @@ class Sensor:
 		self.center=center_coordinates.copy()
 		#The lifetime will be different for each sensor.
 		self.remaining_lifetime=lifetime
+		#The id
+		self.id=Sensor.sid
+		Sensor.sid+=1
 
 	#Can this sensor sense a point 'point'?
 	def can_sense(self,point):
@@ -24,7 +29,8 @@ class Sensor:
 
 	#Object representation in human readable form.
 	def __repr__(self):
-		return f'Sensor:[Center:[{self.center}],Radius:{Sensor.radius},Remaining Time:{self.remaining_lifetime}]'
+#		return f'Sensor:[Center:[{self.center}],Radius:{Sensor.radius},Remaining Time:{self.remaining_lifetime}]'
+		return f'{self.id}'
 
 
 p=Point(1,2)

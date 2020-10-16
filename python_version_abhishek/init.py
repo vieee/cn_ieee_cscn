@@ -21,6 +21,8 @@ def set_sensing_radius(r):
 '''
 Set the maximum lifetime of each sensor.
 '''
+#TODO
+#Remove this.
 def set_sensor_max_lifetime(l):
 	type_check(l,(int,float),'Lifetime must be a positive integer or a float')
 	value_check(l>0,'Lifetime must be greater than 0')
