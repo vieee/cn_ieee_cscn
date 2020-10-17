@@ -58,7 +58,7 @@ class CoverSet():
 	def __repr__(self):
 		print('{(Lifetime:',self.lifetime,')')
 		for sensor in self.sensor_set:
-			print(sensor)
+			print(sensor,end=' ')
 		print('}')
 		return ''
 
