@@ -14,12 +14,13 @@ def show_up(coverset_list):
   least_timer = float("inf")
   
   for r in coverset_list:
-    # print(r, np.sum(r)[1])
+    '''
     ctr = 0
     for x in r:
       ctr += x[1]
-
     least_timer = min(least_timer, ctr)
+    '''
+    least_timer = min(least_timer, sum([x[1] for x in r]))
   # print(least_timer)
 
   while time_of_work < least_timer:

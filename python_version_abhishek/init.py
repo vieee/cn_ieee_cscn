@@ -73,7 +73,7 @@ if __name__=='__main__':
 	set_sensor_max_lifetime(int(input('Enter sensor max lifetime:')))
 	set_sensing_region_width(int(input('Enter sensing region width:')))
 	set_sensing_region_height(int(input('Enter sensing region height:')))
-	set_sensor_density(int(input('Enter sensor density:')))
+	set_sensor_density(float(input('Enter sensor density:')))
 	set_sensor_coordinates()
 	print('Sensor Radius:',sensor_sensing_radius)
 	print('Sensor Maximum Lifetime:',sensor_maximum_lifetime)
