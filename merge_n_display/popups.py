@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 
 def alert_popup(title, message, path):
     """Generate a pop-up window for special messages."""
