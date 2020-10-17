@@ -25,6 +25,7 @@ class Sensor:
 	#Object representation in human readable form.
 	def __repr__(self):
 		return f'Sensor:[Center:[{self.center}],Radius:{Sensor.radius},Remaining Time:{self.remaining_lifetime}]'
+		#return 'Sensor:[Center:[%s],Radius:%s,Remaining Time:%s]'%(self.center, Sensor.radius, self.remaining_lifetime)
 
 
 p=Point(1,2)

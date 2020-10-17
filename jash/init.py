@@ -7,7 +7,7 @@ If the global variables are already initialized , then ignore this file.
 from Globals import *
 #Import type and condition checking barriers.
 from check import *
-
+from Sensor import *
 
 '''
 Set the sensing radius of the sensors.
@@ -62,7 +62,7 @@ def set_sensor_coordinates():
 	sensor_side = (1/(sensor_density))**(1/2) 
     # 1/density would give us the area for 1 sensor, square root gives us the size of the square
 	int_side=int(sensor_side)
-	print(sensor_side)
+	print("Side of sensor", sensor_side)
 	for i in range(sensing_region_width//int_side):
 		for j in range(sensing_region_height//int_side):
             # we do the following to reduce the probability of sensors to be at the corners of the cell
@@ -73,7 +73,8 @@ def set_sensor_coordinates():
 			point=Point(int((temp[0]+(sensor_side*i))%sensing_region_width),int((temp[1]+(sensor_side*j))%sensing_region_height))
 #             sensors.append([int((temp[0]+(sensor_side*i))%sensing_region_width),int((temp[1]+(sensor_side*j))%sensing_region_height)])
 			sensors.append(Sensor(point,sensor_maximum_lifetime))
-	return sensors
+	global sensor_coordinates
+	sensor_coordinates = sensors
 
 def createGrids(sensor_coordinates,K,R):
     cell_x = cell_y =  2*K*R
@@ -96,16 +97,18 @@ if __name__=='__main__':
 	#	
 	#Start defining the global variables one by one.
 	#
+	sensor_coordinates = None
 	set_sensing_radius(int(input('Enter sensing radius:')))
 	set_sensor_max_lifetime(int(input('Enter sensor max lifetime:')))
 	set_sensing_region_width(int(input('Enter sensing region width:')))
 	set_sensing_region_height(int(input('Enter sensing region height:')))
-	set_sensor_density(int(input('Enter sensor density:')))
+	set_sensor_density(float(input('Enter sensor density:')))
 	set_sensor_coordinates()
 	print('Sensor Radius:',sensor_sensing_radius)
 	print('Sensor Maximum Lifetime:',sensor_maximum_lifetime)
 	print('Sensing Region Width:',sensing_region_width)
 	print('Sensing Region Height:',sensing_region_height)
 	print('Sensor Density:',sensor_density)
-	print('Sensor Coordinates:',sensor_coordinates)
+	print('Sensor Coordinates:',len(sensor_coordinates))
+	#print('Sensor Coordinates:', sensor_coordinates)
 

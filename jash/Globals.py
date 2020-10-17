@@ -3,7 +3,7 @@ Defines all global data structures and variables.
 
 All of these can be either initialized here , or can be initialized in separate functions as and when necessary.
 '''
-
+import random
 #The sensing radius of the sensors.
 sensor_sensing_radius=0
 
