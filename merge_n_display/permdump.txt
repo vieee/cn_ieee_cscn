@@ -1,0 +1,6 @@
+total 16
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 18 12:04 .
+drwxr-xr-x 8 abhisheks abhisheks 4096 Oct 16 09:18 ..
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct 18 12:04 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks  751 Oct 16 09:18 popups.py
+-rw-r--r-- 1 abhisheks abhisheks 1779 Oct 16 09:18 show_final_message.py
