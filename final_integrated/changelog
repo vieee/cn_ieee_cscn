@@ -1,0 +1,5 @@
+Contains a list of changes, oldest first.
+
+Began integration.
+Removed Octave codebase as it is not necessary.
+Removed Point.py as Point class is redundant.
