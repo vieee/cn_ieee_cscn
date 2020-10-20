@@ -377,6 +377,114 @@ class Shape:
 			We now have the remaining set of vertices representing the irregular shape
 		'''
 		return index, points
+
+	def getIntersectionSet(self, sensor):
+		I = []
+		temp = None
+		for i in range(len(self.curveSet)):
+			temp = self.curveSet[i].get_points_of_intersection(sensor)
+			if len(temp) > 0:
+				if not self.curveSet[i].isCircle:
+					outcome = {
+						(0, 1, None): (True, False),
+						(1, 1, None): (True, True),
+						(0, None, 1): (False, False),
+						(1, None, 1): (False, True)
+					}
+					value1 = 1 if self.curveSet[i].x is not None else None
+					value2 = 1 if self.curveSet[i].y is not None else None
+					#print(self.Directions[i], value1, value2)
+					out = outcome[(self.Directions[i], value1, value2)]
+					isX, isGreater = out[0], out[1]
+
+					if isX:
+						if isGreater and temp[0][0] >= self.curveSet[i].x:
+							I.append((temp[0], i))
+						elif not isGreater and temp[0][0] <= self.curveSet[i].x:
+							I.append((temp[0], i))
+					else:
+						if isGreater and temp[0][1] >= self.curveSet[i].y:
+							I.append((temp[0], i))
+						elif not isGreater and temp[0][1] <= self.curveSet[i].y:
+							I.append((temp[0], i))
+				else:
+					quadrant1 = self.curveSet[i].getQuadrant(self.Q[i], self.Directions[i])
+					quadrant2 = self.curveSet[i].getQuadrant(self.Q[(i + 1) % len(self.Q)], self.Directions[i])
+					quadrant = self.curveSet[i].getQuadrant(init.Point(temp[0]), self.Directions[i])
+					if len(temp) > 1:
+						Quadrant = self.curveSet[i].getQuadrant(init.Point(temp[1]), self.Directions[i])
+					else:
+						Quadrant = 0
+					if quadrant == quadrant1 or Quadrant == quadrant1:
+						#Here the third value in tuple will be for greater than starting point
+						outcome = {
+							(0, 1, False): True, (0, 2, False): True,
+							(0, 3, True): True, (0, 4, True): True,
+							(1, 1, True): True, (1, 2, True): True,
+							(1, 3, False): True, (1, 4, False): True
+						}
+
+						if quadrant == quadrant1 and outcome.get((self.Directions[i], quadrant, temp[0][0] >= self.Q[i]._x), False):
+							I.append((temp[0], i))
+
+						if len(temp) > 1 and Quadrant == quadrant1 and outcome.get((self.Directions[i], Quadrant, temp[1][0] >= self.Q[i]._x), False):
+							I.append((temp[1], i))
+					elif quadrant != quadrant1 or Quadrant != quadrant1:
+						movement = {
+							(0, 1): 2, (0, 2): 3, (0, 3): 4, (0, 4): 1,
+							(1, 1): 4, (1, 4): 3, (1, 3): 2, (1, 2): 1
+						}
+
+						end = {
+							(0, 1, True): True, (0, 2, True): True,
+							(0, 3, False): True, (0, 4, False): True,
+							(1, 1, False): True, (1, 2, False): True,
+							(1, 3, True): True, (1, 4, True): True
+						}
+
+						if quadrant != quadrant1:
+							temp1 = quadrant1
+							while temp1 != quadrant2 and temp1 != quadrant:
+								temp1 = movement[(self.Directions[i], temp1)]
+
+							if quadrant == quadrant2:
+								if end.get((self.Directions[i], quadrant2, temp[0][0] >= self.Q[(i+1)%len(self.Q)]._x), False):
+									I.append((temp[0], i))
+							else:
+								I.append((temp[0], i))
+
+						if len(temp) > 1 and Quadrant != quadrant1:
+							temp1 = quadrant1
+							while temp1 != quadrant2 and temp1 != Quadrant:
+								temp1 = movement[(self.Directions[i], temp1)]
+
+							if Quadrant == quadrant2:
+								if end.get((self.Directions[i], quadrant2, temp[0][0] >= self.Q[(i+1)%len(self.Q)]._x), False):
+									I.append((temp[1], i))
+							else:
+								I.append((temp[1], i))
+		return I
+
+	def update(self, index, sensors, points, I):
+		sensor = sensors.pop(index)
+		curve = Curve(sensor)
+		n = len(self.Q)
+		for i in range(len(I) - 1, -1, -1):
+			if I[i][1] == n - 1:
+				self.Q.append(init.Point(I[i][0]))
+				self.curveSet.append(curve)
+				self.Directions.append(self.getDirection(len(self.Q) - 1))
+			else:
+				self.Q.insert(I[i][1] + 1, init.Point(I[i][0]))
+				self.curveSet.insert(I[i][1] + 1, curve)
+				self.Directions.insert(I[i][1] + 1, self.getDirection(I[i][1] + 1))
+
+		for i in points:
+			for j in range(len(self.Q)):
+				if (self.Q[j]._x, self.Q[j]._y) == i:
+					self.Q.pop(j)
+					break
+		return sensors
 '''
 To execute the function to get best sensor
 rect, sensors = init.init()

@@ -18,6 +18,7 @@ def set_sensor_coordinates():
 
 	Globals.sensors=[]
 
+	#sensor_coords = []
 	sensor_side = (1/(sensor_density))**(1/2) 
 	#Round it to an integer.
 	int_side=int(sensor_side)
@@ -39,6 +40,5 @@ def set_sensor_coordinates():
 			l=random.randint(80,100)
 			#The new sensor.
 			sensor=Sensor(x,y,l)
-
+			#Append to global list directly.
 			Globals.sensors.append(sensor)
-

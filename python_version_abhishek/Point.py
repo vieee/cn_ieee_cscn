@@ -20,8 +20,8 @@ class Point():
 	
 	#Display the object details in human readable form.
 	def __repr__(self):
-		return f'Point:(x={self._x},y={self._y})'
-		#return 'Point:(x=%s,y=%s)'%(self._x, self._y)
+		#return f'Point:(x={self._x},y={self._y})'
+		return 'Point:(x=%s,y=%s)'%(self._x, self._y)
 
 	#Deep copy a point and return it.
 	#Use this , or use the 'deepcopy' function from the 'copy' module.

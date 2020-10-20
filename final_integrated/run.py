@@ -18,6 +18,7 @@ if __name__=='__main__':
 
 	#Set all sensors here.
 	#Jashs/Tanishs algo.
+<<<<<<< HEAD
 	init_sensors.set_sensor_coordinates()
 
 	#Set the value of K.
@@ -44,5 +45,4 @@ if __name__=='__main__':
 	final_result=merge.merge_coversets(coversets_of_cells)
 
 	print(final_result)
-
 
