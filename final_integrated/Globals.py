@@ -12,7 +12,7 @@ sensor_sensing_radius=50
 
 #A suitable data structure containing all the sensor object.
 #Contents of the data structure must be of type 'Sensor'
-sensor_coordinates=None
+sensor_coordinates=[]
 
 #The dimensions of the sensing region.
 #sensing_region_width=0

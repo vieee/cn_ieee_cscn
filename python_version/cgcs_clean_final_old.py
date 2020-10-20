@@ -2,14 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import math
-np.random.seed(141)
 
-'''
-name: Name of sensor will be something unique Example S10, S11, S12, .....
-cells: Used for finding the area(cells that the sensor covers) - Will only be used in the algo can be deleted later
-coor: tuple of x and y coordinates
-radius and lifetime: self explanatory (Also Radius for now is used from global variable so this can/should be removed)
-'''
+np.random.seed(141)
 class Sensor:
     def __init__(self,name,cells,coor,radius=50,lifetime=100):
         self.name=name
@@ -18,11 +12,9 @@ class Sensor:
         self.radius=radius
         self.lifetime=lifetime
 
-
-# Global Variables
-width=height=500
-sensor_density=0.008
-sensing_radius=50
+width=height=100
+sensor_density=0.04
+sensing_radius=10
 K=[1,2,3]
 
 def getSensorCoordinates():
@@ -60,21 +52,22 @@ def create_grids(K,R,sensors):
                     poi.append(sensor)
             grid_sensors[i][j]=poi
     return grid_sensors
+
 grid_sensors=create_grids(K=K[0],R=sensing_radius,sensors=sensors)
 
-
-# Number of Grid Cells and dimensions of each grid cell (Considered as a Square)
+# Number of Grid Cells
 num_of_grid_cells = len(grid_sensors)**2
 dimen_of_gridcell = width//len(grid_sensors)
 print("Num of Grid Cells",num_of_grid_cells)
 print("Dimens of Grid Cell",dimen_of_gridcell)
 
-# This is the factor by which the Gridcell needs to be expanded or divided.
-# This will be used to expand all the parameters later on for example the Sensing Radius
-mult_factor = 5
+plt.scatter(*zip(*[sensor.coor for sensor in grid_sensors[0][0]]),s=2)
+hello = [x for x in grid_sensors[0][0]]
+len(grid_sensors[0][0])
+# for sens in grid_sensors[0][0]:
+#     print(sens.name, sens.coor)
+mult_factor = 10
 
-
-# Algorithm to find the number of cells/points a Sensor with centre x,y can cover in the grid_cell
 def ret_points(centre, grid_cell, R):
     x,y = centre
     points = []
@@ -145,54 +138,20 @@ def ret_points(centre, grid_cell, R):
                 points.append([j,i])
             else:
                 break
-        deg-=90.0/R
-    return points   
+        deg+=90.0/R
+    return points
 
-# Global Variables
 R = sensing_radius*mult_factor
-cover_perc = 0.07
+cover_perc = 0.03
 
 max_val = 0
 max_sensor = None
-
-'''
-coverset_dict : This is a dictionary with Key as the indexes i.e the portion of original region which we are
-working on right now  and value as a list of coversets.
-
-Example: (0,1) : [......]       (4,3) : [.......]
-
-The value which is a list of coversets will be as follows:
-
-(0,1) : [ 
-            CoverSet1,
-            CoverSet2,
-            CoverSet3,
-            CoverSet4,
-            and so on
-        ] 
-
-Each coverset is a list of Sensors, so the CoverSet1 will be:
-CoverSet1: [Sensor1, Sensor2, Sensor3,......]
-
-Therefore combining all these:
-
-[(0,1) : [ 
-            [Sensor1, Sensor2, Sensor3,......],
-            [Sensor4, Sensor5, Sensor6,......],
-         ],
- (0,2) : [ 
-            [Sensor7, Sensor8, Sensor9,......],
-            [Sensor10, Sensor11, Sensor12,......],
-         ], 
-]
-
-'''
 
 coverset_dict = {}
 le = len(grid_sensors)
 for i in range(le):
     for j in range(le):
-        print('\nDoing',i,j,'......')
+        print('Doing',i,j,'......')
         grid_cell = np.ones((dimen_of_gridcell*mult_factor,dimen_of_gridcell*mult_factor)) # 200 x 200
         all_cover_sets = []
         cover_sets = []
@@ -208,14 +167,12 @@ for i in range(le):
 
                 if len(sens.cells) > max_val:
                     max_val = len(sens.cells)
-                    max_sensor = sens    
+                    max_sensor = sens
+
             for x,y in max_sensor.cells:
                 grid_cell[x][y] = 0
-#             print('MAX = ',max_sensor.name,max_sensor.coor,len(max_sensor.cells),'Ones=',np.count_nonzero(grid_cell == 1))
             if max_val <= 0 or np.count_nonzero(grid_cell == 1) < int(cover_perc*(len(grid_cell)**2)):
-#                 print('Val=', np.count_nonzero(grid_cell == 1))
                 if np.count_nonzero(grid_cell == 1) < int(cover_perc*(len(grid_cell)**2)):
-                    print('Added....')
                     all_cover_sets.append(cover_sets)
                 cover_sets = []
                 grid_cell = np.ones((dimen_of_gridcell*mult_factor,dimen_of_gridcell*mult_factor))
@@ -223,7 +180,6 @@ for i in range(le):
             cover_sets.append(max_sensor)
             grid_sensors[i][j].remove(max_sensor)
         coverset_dict[(i,j)] = all_cover_sets
-        
 
 for key,value in coverset_dict.items():
     print(key)
@@ -232,4 +188,3 @@ for key,value in coverset_dict.items():
             print(sens.name,end=" ")
         print()
     print()
-

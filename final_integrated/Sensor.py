@@ -34,8 +34,10 @@ class Sensor:
 
 	#Object representation in human readable form.
 	def dump_vars(self):
-		print(f'Sensor:[Center:(self._x,self._y),Radius:{Sensor.radius},Remaining Time:{self.max_lifetime}]')
+		#print(f'Sensor:[Center:(self._x,self._y),Radius:{Sensor.radius},Remaining Time:{self.max_lifetime}]')
+		print('Sensor:[Center:(self._x,self._y),Radius:', Sensor.radius, ', Remaining Time:', self.max_lifetime, ']')
 
 	def __repr__(self):
-		return f'({self.id})'
+		#return f'({self.id})'
+		return '(%s)'%(self.id)
 

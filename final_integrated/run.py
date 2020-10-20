@@ -2,10 +2,9 @@
 MAIN ENTRY POINT OF THE PROGRAM IS HERE.
 '''
 
-from Globals import *
+#from Globals import *
 #Remove this if globals are set directly.
 from init import *
-
 
 if __name__=='__main__':
 
@@ -20,12 +19,8 @@ if __name__=='__main__':
 
 	#Set all sensors here.
 	#Jashs/Tanishs algo.
+	global sensor_coordinates
 	set_sensor_coordinates()
-
 	#Set the value of K.
 	K=int(input('Enter K:'))
-
-	print('here',sensor_coordinates)
-
-
-
+	print('here',len(sensor_coordinates))

@@ -52,8 +52,5 @@ def set_sensor_density(density):
 
 def set_sensor_coordinates():
 	global sensor_coordinates
-	sensor_coordinates=[]
-	init_sensors.set_sensor_coordinates(sensor_coordinates,sensing_region_width,sensing_region_height,sensor_density)
-	print(sensor_coordinates)
-
-
+	sensor_coordinates = init_sensors.set_sensor_coordinates(sensor_coordinates,sensing_region_width,sensing_region_height,sensor_density)
+	print(len(sensor_coordinates))

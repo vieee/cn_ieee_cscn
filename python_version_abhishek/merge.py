@@ -30,8 +30,8 @@ coverset_lists.append(generate_coversets(4,2))
 def print_coverset_list(c):
 	print('.......')
 	for x in c:
-		print(f'\t{x}')
-		#print('\t%s'%(x))
+		#print(f'\t{x}')
+		print('\t%s'%(x))
 	print('.......')
 
 print('Coverset lists:\n')

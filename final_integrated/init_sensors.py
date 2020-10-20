@@ -8,6 +8,7 @@ Set the coordinates of the sensors.
 '''
 def set_sensor_coordinates(sensor_coords,region_width,region_height,sensor_density):
 
+	#sensor_coords = []
 	sensor_side = (1/(sensor_density))**(1/2) 
 	#Round it to an integer.
 	int_side=int(sensor_side)
@@ -34,4 +35,5 @@ def set_sensor_coordinates(sensor_coords,region_width,region_height,sensor_densi
 			sensor=Sensor(x,y,l)
 #			sensor_coords.append(Sensor('S'+str(i)+str(j),[],sensor))
 			sensor_coords.append(sensor)
+	return sensor_coords
 
