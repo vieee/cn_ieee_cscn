@@ -39,3 +39,11 @@ class Sensor:
 	def __repr__(self):
 		return f'({self.id})'
 
+	#Return the center as a tuple of the form (x,y)
+	def center(self):
+		return (self._x,self._y)
+
+	#Return the maximum lifetime of the sensor.
+	def lifetime(self):
+		return self.max_lifetime
+

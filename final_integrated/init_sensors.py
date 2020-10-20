@@ -1,19 +1,26 @@
+'''
+Set the coordinates of the sensors.
+'''
+
 #Import random.
 import random
 #Import the sensor.
 from Sensor import Sensor
+#Import all global variables.
+import Globals
 
-'''
-Set the coordinates of the sensors.
-'''
-def set_sensor_coordinates(sensor_coords,region_width,region_height,sensor_density):
+def set_sensor_coordinates():
+
+	#Aliasing the global variables
+	region_height=Globals.sensing_region_height
+	region_width=Globals.sensing_region_width
+	sensor_density=Globals.sensor_density
+
+	Globals.sensors=[]
 
 	sensor_side = (1/(sensor_density))**(1/2) 
 	#Round it to an integer.
 	int_side=int(sensor_side)
-
-
-	print(region_width,int_side,region_width//int_side)
 
 	for i in range(int(region_width//int_side)):
 		for j in range(int(region_height//int_side)):
@@ -29,9 +36,9 @@ def set_sensor_coordinates(sensor_coords,region_width,region_height,sensor_densi
 			#Sensor Y-coordinate.
 			y=int((temp[1]+(sensor_side*j))%region_height)
 			#Set sensor lifetime as 100 now(must be randomized later)
-			l=100
+			l=random.randint(80,100)
 			#The new sensor.
 			sensor=Sensor(x,y,l)
-#			sensor_coords.append(Sensor('S'+str(i)+str(j),[],sensor))
-			sensor_coords.append(sensor)
+
+			Globals.sensors.append(sensor)
 

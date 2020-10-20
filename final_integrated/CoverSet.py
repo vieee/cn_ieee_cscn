@@ -7,12 +7,17 @@ from Sensor import Sensor
 #Defines a cover set.
 #
 class CoverSet():
+
+	ID=0
+
 	#
 	#Consrtuctor initializes values.
 	#
 	def __init__(self):
 		self.sensor_set=set()
 		self.lifetime=float('inf')
+		self.id=CoverSet.ID
+		CoverSet.ID+=1
 
 	#
 	#Reduce the lifetime of the coverset to the new lifetime.
@@ -37,7 +42,7 @@ class CoverSet():
 		l2=len(self.sensor_set)
 		#We were able to add
 		if l1==l2-1:
-			self.lifetime=min(self.lifetime,sensor.remaining_lifetime)
+			self.lifetime=min(self.lifetime,sensor.lifetime())
 			return True
 		#Return False on failure to add sensor.
 		return False
@@ -56,11 +61,14 @@ class CoverSet():
 	#Human readable representation.
 	#
 	def __repr__(self):
-		print('{(Lifetime:',self.lifetime,')')
-		for sensor in self.sensor_set:
-			print(sensor,end=' ')
-		print('}')
-		return ''
+		return f'[Coverset:{self.id}:{self.lifetime}]'
+
+
+#		print('{(Lifetime:',self.lifetime,')')
+#		for sensor in self.sensor_set:
+#			print(sensor,end=' ')
+#		print('}')
+#		return ''
 
 
 
