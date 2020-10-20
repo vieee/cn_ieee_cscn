@@ -18,7 +18,6 @@ if __name__=='__main__':
 
 	#Set all sensors here.
 	#Jashs/Tanishs algo.
-<<<<<<< HEAD
 	init_sensors.set_sensor_coordinates()
 
 	#Set the value of K.
