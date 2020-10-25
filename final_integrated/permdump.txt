@@ -1,0 +1,17 @@
+total 60
+drwxrwxr-x 3 abhisheks abhisheks 4096 Oct 21 18:33 .
+drwxr-xr-x 8 abhisheks abhisheks 4096 Oct 21 01:53 ..
+-rw-rw-r-- 1 abhisheks abhisheks  681 Oct  7 15:19 check.py
+-rw-rw-r-- 1 abhisheks abhisheks 1752 Oct 21 01:40 CoverSet.py
+-rw-rw-r-- 1 abhisheks abhisheks  791 Oct 21 00:51 create_grids.py
+-rw-rw-r-- 1 abhisheks abhisheks 1478 Oct 21 00:37 find_area.py
+-rw-rw-r-- 1 abhisheks abhisheks 2594 Oct 21 11:53 find_coversets.py
+-rw-r--r-- 1 abhisheks abhisheks  728 Oct 21 11:45 Globals.py
+-rw-r--r-- 1 abhisheks abhisheks 1537 Oct 21 01:49 init.py
+-rw-r--r-- 1 abhisheks abhisheks 1192 Oct 21 01:49 init_sensors.py
+-rw-r--r-- 1 abhisheks abhisheks 1293 Oct 21 01:36 merge.py
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct 25 12:02 permdump.txt
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 21 11:59 __pycache__
+-rw-rw-r-- 1 abhisheks abhisheks  239 Oct 21 01:52 required_structure
+-rw-r--r-- 1 abhisheks abhisheks  642 Oct 21 18:33 run.py
+-rw-r--r-- 1 abhisheks abhisheks 1698 Oct 21 01:47 Sensor.py

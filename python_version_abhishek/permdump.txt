@@ -1,14 +1,15 @@
-total 48
-drwxr-xr-x 3 abhisheks abhisheks 4096 Oct 16 21:42 .
-drwxr-xr-x 8 abhisheks abhisheks 4096 Oct 16 09:18 ..
+total 56
+drwxr-xr-x 3 abhisheks abhisheks 4096 Oct 21 01:47 .
+drwxr-xr-x 8 abhisheks abhisheks 4096 Oct 21 01:53 ..
+-rw-rw-r-- 1 abhisheks abhisheks 7292 Oct 20 02:06 cgcs_clean_final_master.py
 -rw-rw-r-- 1 abhisheks abhisheks  681 Oct  7 15:19 check.py
 -rw-rw-r-- 1 abhisheks abhisheks 1657 Oct 16 21:18 CoverSet.py
 -rw-rw-r-- 1 abhisheks abhisheks  634 Oct  7 15:31 Globals.py
 -rw-rw-r-- 1 abhisheks abhisheks 1930 Oct  7 15:16 GridCell.py
--rw-rw-r-- 1 abhisheks abhisheks 2583 Oct  7 15:31 init.py
--rw-r--r-- 1 abhisheks abhisheks 2303 Oct 16 21:42 merge.py
--rw-r--r-- 1 abhisheks abhisheks    0 Oct 18 12:04 permdump.txt
--rw-rw-r-- 1 abhisheks abhisheks 1472 Oct 16 18:39 Point.py
-drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 16 21:32 __pycache__
--rw-rw-r-- 1 abhisheks abhisheks 1344 Oct 16 21:32 Sensor.py
+-rw-r--r-- 1 abhisheks abhisheks 2585 Oct 18 16:15 init.py
+-rw-r--r-- 1 abhisheks abhisheks 2325 Oct 21 01:47 merge.py
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct 25 12:02 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks 1521 Oct 21 01:47 Point.py
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 21 01:47 __pycache__
+-rw-r--r-- 1 abhisheks abhisheks 1371 Oct 21 01:47 Sensor.py
 -rw-rw-r-- 1 abhisheks abhisheks  712 Oct 16 21:19 test1.txt

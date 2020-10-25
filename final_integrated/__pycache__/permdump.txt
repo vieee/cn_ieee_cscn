@@ -1,0 +1,18 @@
+total 64
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 21 11:59 .
+drwxrwxr-x 3 abhisheks abhisheks 4096 Oct 21 18:33 ..
+-rw-r--r-- 1 abhisheks abhisheks  706 Oct 21 01:47 check.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks  692 Oct 21 11:45 check.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1633 Oct 21 11:45 CoverSet.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1180 Oct 21 11:45 create_grids.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1397 Oct 21 11:45 find_area.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1606 Oct 21 11:59 find_coversets.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks  506 Oct 21 01:47 Globals.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks  499 Oct 21 11:45 Globals.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1820 Oct 21 01:47 init.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1137 Oct 21 01:47 init_sensors.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1186 Oct 21 11:45 init_sensors.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks  873 Oct 21 11:45 merge.cpython-36.pyc
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct 25 12:02 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks 1697 Oct 21 01:47 Sensor.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1837 Oct 21 11:45 Sensor.cpython-36.pyc

@@ -1,6 +1,9 @@
-total 40
-drwxr-xr-x 2 abhisheks abhisheks  4096 Oct  8 01:50 .
-drwxr-xr-x 8 abhisheks abhisheks  4096 Oct 16 09:18 ..
+total 88
+drwxr-xr-x 2 abhisheks abhisheks  4096 Oct 21 01:47 .
+drwxr-xr-x 8 abhisheks abhisheks  4096 Oct 21 01:53 ..
+-rw-r--r-- 1 abhisheks abhisheks 26795 Oct 18 16:15 cgcs_clean_final.ipynb
+-rw-r--r-- 1 abhisheks abhisheks  5720 Oct 21 01:47 cgcs_clean_final_old.py
+-rw-r--r-- 1 abhisheks abhisheks  7292 Oct 21 01:47 cgcs_clean_final.py
 -rw-r--r-- 1 abhisheks abhisheks  4809 Oct  6 23:56 init.py
--rw-r--r-- 1 abhisheks abhisheks     0 Oct 18 12:04 permdump.txt
--rw-r--r-- 1 abhisheks abhisheks 20881 Oct  8 01:50 shape.py
+-rw-r--r-- 1 abhisheks abhisheks     0 Oct 25 12:02 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks 24808 Oct 21 01:47 shape.py

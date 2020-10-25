@@ -1,0 +1,8 @@
+total 24
+drwxr-xr-x 2 abhisheks abhisheks 4096 Oct 21 02:40 .
+drwxr-xr-x 3 abhisheks abhisheks 4096 Oct 18 16:15 ..
+-rw-r--r-- 1 abhisheks abhisheks  673 Oct 18 16:15 check.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks  549 Oct 18 16:15 Globals.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks    0 Oct 25 12:02 permdump.txt
+-rw-r--r-- 1 abhisheks abhisheks 1780 Oct 18 16:15 Point.cpython-35.pyc
+-rw-r--r-- 1 abhisheks abhisheks 1379 Oct 18 16:15 Sensor.cpython-35.pyc
